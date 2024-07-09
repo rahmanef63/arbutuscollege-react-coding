@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "jquery": "^3.7.0",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "webpack": "^5.83.1",
+    "webpack-cli": "^5.1.1"
+  }
+}
