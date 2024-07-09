@@ -1,12 +1,13 @@
 import json
 import os
+import re
 
 def file_contains(filepath, patterns):
     try:
         with open(filepath, 'r') as file:
             content = file.read()
             for pattern in patterns:
-                if pattern not in content:
+                if not re.search(pattern, content):
                     print(f"Pattern not found: {pattern}")
                     return False
             return True
@@ -57,12 +58,12 @@ if scripts.get("start-dev") != "webpack-dev-server --open":
 
 # Check if webpack.config.js contains the required path setting
 required_patterns = [
-    "mode: 'development'",
-    "filename: '[name].bundle.js'",
-    "path: path.resolve(__dirname, 'public')",
-    "devtool: 'inline-source-map'",
-    "contentBase: path.resolve(__dirname, 'public')",
-    "port: 8564"
+    r"mode:\s*'development'",
+    r"filename:\s*'\[name\]\.bundle\.js'",
+    r"path:\s*path\.resolve\(__dirname,\s*'public'\)",
+    r"devtool:\s*'inline-source-map'",
+    r"contentBase:\s*path\.resolve\(__dirname,\s*'public'\)",
+    r"port:\s*8564"
 ]
 
 if not file_contains(webpack_config_path, required_patterns):
