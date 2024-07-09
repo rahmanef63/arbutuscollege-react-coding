@@ -3,30 +3,30 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-  mode: 'development', // Ensure mode is set to 'development'
+  mode: 'development',
   entry: {
-    header: './modules/header/header.js', // Ensure entry points are correctly set
-    body: './modules/body/body.js', // Example entry point
-    footer: './modules/footer/footer.js' // Example entry point
+    header: './modules/header/header.js',
+    body: './modules/body/body.js',
+    footer: './modules/footer/footer.js'
   },
   output: {
-    filename: '[name].bundle.js', // Ensure output filename is set correctly
-    path: path.resolve(__dirname, 'public') // Ensure path is set correctly
+    filename: '[name].bundle.js',
+    path: path.resolve(__dirname, 'public')
   },
-  devtool: 'inline-source-map', // Ensure devtool is set to 'inline-source-map'
+  devtool: 'inline-source-map',
   devServer: {
-    contentBase: path.resolve(__dirname, 'public'), // Ensure contentBase is set correctly
-    port: 8564 // Ensure port is set correctly
+    contentBase: path.resolve(__dirname, 'public'),
+    port: 8564
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html' // Ensure template file is set correctly
+      template: './src/index.html'
     }),
-    new CleanWebpackPlugin() // Ensure CleanWebpackPlugin is used
+    new CleanWebpackPlugin()
   ],
   optimization: {
     splitChunks: {
-      chunks: 'all' // Ensure chunks are set to 'all'
+      chunks: 'all'
     }
   }
 };
